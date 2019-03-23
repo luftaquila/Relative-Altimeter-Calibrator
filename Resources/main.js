@@ -29,8 +29,8 @@ $(function() {
     updateAlt();
   });
   function updateAlt() {
-    var seaLvPressure = Number($('#seaLvPressure').val()), currentAirPressure = Number($('#currentAirPressure').val()), temp = Number($('#temp').val()), vaporPoint = Number($('#vaporPoint').val());
     var gravityAcceleration = 9.806, coEff1 = 0.0065, coEff2 = 0.12, gasConst = 287.05;
+    var seaLvPressure = Number($('#seaLvPressure').val()), currentAirPressure = Number($('#currentAirPressure').val()), temp = Number($('#temp').val()), vaporPoint = Number($('#vaporPoint').val());
     $('#altitude').val((Math.log(seaLvPressure / currentAirPressure) * (temp + 273.15 + vaporPoint * coEff2) / (gravityAcceleration / gasConst - coEff1 / 2 * Math.log(seaLvPressure / currentAirPressure))).toFixed(1));
   }
   function updateSpot() {
