@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>상대고도계 보정기</title>
+    <meta charset="utf-8">
+    <meta property="og:title" content="상대고도계 보정기" />
+    <meta property="og:url" content="https://luftaquila.github.io/altimeter/" />
+    <meta property="og:description" content="상대고도계 보정기" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html">
+  </head>
+  <body>
+    <table style='text-align: center'>
+      <tr>
+        <td>현재기압(hPa)</td>
+        <td>증기압(hPa)</td>
+        <td>지점</td>
+        <td>기온('C)</td>
+        <td>해면기압(hPa)</td>
+        <td>고도(m)</td>
+      </tr>
+      <tr>
+        <td><input id='currentAirPressure' type="number" style='width: 70; text-align: center'></input></td>
+        <td><input id='vaporPoint' type="number" style='width: 70; text-align: center' value="5"></input></td>
+        <td>
+          <select id='spot' style='width: 80'></select>
+        </td>
+        <td><input id='temp' type="number" style='width: 70; text-align: center' disabled></input></td>
+        <td><input id='seaLvPressure' type="number" style='width: 70; text-align: center' disabled></input></td>
+        <td><input id='altitude' type="number" style='width: 70; text-align: center' disabled></input></td>
+      </tr>
+    </table>
+    <script src='/altimeter/Resources/jquery-3.3.1.min.js'></script>
+    <script src='/altimeter/Resources/main.js'></script>
+    <style>
+      td { padding: 0 15 10 }
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+      }
+    </style>
+  </body>
+</html>
