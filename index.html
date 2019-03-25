@@ -9,24 +9,33 @@
     <meta http-equiv="Content-Type" content="text/html">
   </head>
   <body>
-    <table style='text-align: center'>
+    Status : <span id="status" style="color:#ffbf00">Loading Data...</span><br><br>
+    <table>
       <tr>
         <td>현재기압(hPa)</td>
-        <td>증기압(hPa)</td>
-        <td>지점</td>
-        <td>기온('C)</td>
-        <td>해면기압(hPa)</td>
-        <td>고도(m)</td>
+        <td><input id='currentAirPressure' type="number" style='width: 60; text-align: center'/></td>
       </tr>
       <tr>
-        <td><input id='currentAirPressure' type="number" style='width: 70; text-align: center'></input></td>
-        <td><input id='vaporPoint' type="number" style='width: 70; text-align: center' value="5"></input></td>
-        <td>
-          <select id='spot' style='width: 80'></select>
-        </td>
-        <td><input id='temp' type="number" style='width: 70; text-align: center' disabled></input></td>
-        <td><input id='seaLvPressure' type="number" style='width: 70; text-align: center' disabled></input></td>
-        <td><input id='altitude' type="number" style='width: 70; text-align: center' disabled></input></td>
+        <td>증기압(hPa)</td>
+        <td><input id='vaporPoint' type="number" style='width: 60; text-align: center' value="5"/></td>
+      </tr>
+      <tr><td></td></tr>
+      <tr>
+        <td>위치</td>
+        <td><select id='spot' style='width: 80'></select></td>
+      </tr>
+      <tr>
+        <td>기온</td>
+        <td class='hideBeforeLoad' style="display:none;"><span id='temp' style='text-align: center'></span> °C</td>
+      </tr>
+      <tr>
+        <td>해면기압</td>
+        <td class='hideBeforeLoad' style="display:none;"><span id='seaLvPressure' style='text-align: center'></span> hPa</td>
+      </tr>
+      <tr><td></td></tr>
+      <tr>
+        <td>고도</td>
+        <td class='hideBeforeLoad' style="display:none;"><span id='altitude' style='text-align: center'></span> m</td>
       </tr>
     </table>
     <script src='/Relative-Altimeter-Calibrator/Resources/jquery-3.3.1.min.js'></script>
