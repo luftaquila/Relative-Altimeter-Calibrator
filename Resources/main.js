@@ -31,17 +31,49 @@ $(function() {
   $('input').keyup(function() {
     updateAlt();
   });
-  function updateAlt() {
-    var gravityAcceleration = 9.806, coEff1 = 0.0065, coEff2 = 0.12, gasConst = 287.05;
-    var seaLvPressure = Number($('#seaLvPressure').text()), currentAirPressure = Number($('#currentAirPressure').val()), temp = Number($('#temp').text()), vaporPoint = Number($('#vaporPoint').val());
-    $('#altitude').text((Math.log(seaLvPressure / currentAirPressure) * (temp + 273.15 + vaporPoint * coEff2) / (gravityAcceleration / gasConst - coEff1 / 2 * Math.log(seaLvPressure / currentAirPressure))).toFixed(1));
-  }
-  function updateSpot() {
-    data.forEach(function(val) {
-      if($('#spot').val() == val[0]) {
-        $('#temp').text(val[1]);
-        $('#seaLvPressure').text(val[2]);
-      }
-    });
-  }
+  get_location();
 });
+function updateAlt() {
+  var gravityAcceleration = 9.8, coEff1 = 0.0065, coEff2 = 0.12, gasConst = 287.05;
+  var seaLvPressure = Number($('#seaLvPressure').text()), currentAirPressure = Number($('#currentAirPressure').val()), temp = Number($('#temp').text()), vaporPoint = Number($('#vaporPoint').val());
+  $('#altitude').text((Math.log(seaLvPressure / currentAirPressure) * (temp + 273.15 + vaporPoint * coEff2) / (gravityAcceleration / gasConst - coEff1 / 2 * Math.log(seaLvPressure / currentAirPressure))).toFixed(1));
+}
+function updateSpot() {
+  data.forEach(function(val) {
+    if($('#spot').val() == val[0]) {
+      $('#temp').text(val[1]);
+      $('#seaLvPressure').text(val[2]);
+    }
+  });
+}
+function get_location() {
+  navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
+}
+function geo_success(position) {
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  var altitude = position.coords.altitude;
+  var altitudeAccuracy = position.coords.altitudeAccuracy;
+  $('#location').text(latitude + '&' + longitude + '& '+ altitude + '&' + altitudeAccuracy);
+}
+function geo_error(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            $('#location').text("User denied the request for Geolocation.");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            $('#location').text("Location information is unavailable.");
+            break;
+        case error.TIMEOUT:
+            $('#location').text("The request to get user location timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            $('#location').text("An unknown error occurred.");
+            break;
+    }
+}
+var geo_options = {
+  enableHighAccuracy: true,
+  maximumAge: 30000,
+  timeout: 27000
+};
