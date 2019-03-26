@@ -47,14 +47,18 @@ function updateSpot() {
   });
 }
 function get_location() {
-  navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
+  navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
 }
 function geo_success(position) {
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
-  var altitude = position.coords.altitude;
+  var altitudeGPS = position.coords.altitude;
   var altitudeAccuracy = position.coords.altitudeAccuracy;
-  $('#location').text(latitude + '&' + longitude + '& '+ altitude + '&' + altitudeAccuracy);
+  $('#latitude').text('latitude : ' + latitude);
+  $('#longitude').text('longitude : ' + longitude);
+  $('#altitudeGPS').text('altitudeGPS : ' + altitudeGPS);
+  $('#altitudeAccuracy').text('altitudeAccuracy : ' + altitudeAccuracy);
+
 }
 function geo_error(error) {
     switch(error.code) {
