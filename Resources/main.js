@@ -55,24 +55,24 @@ function geo_success(position) {
   var altitudeGPS = position.coords.altitude;
   var accuracy = position.coords.accuracy;
   var geoid = 26;
-  $('#latitude').text('latitude : ' + latitude.toFixed(3));
-  $('#longitude').text('longitude : ' + longitude.toFixed(3));
-  $('#altitudeGPS').text('altitudeGPS : ' + (altitudeGPS ? Number(altitudeGPS - geoid).toFixed(1) : null));
-  $('#accuracy').text('accuracy : ' + accuracy);
+  $('#latitude').text(latitude.toFixed(3) + '°');
+  $('#longitude').text(longitude.toFixed(3) + '°');
+  $('#altitudeGPS').text((altitudeGPS ? Number(altitudeGPS - geoid).toFixed(1) + ' m' : null));
+  $('#accuracy').text(accuracy.toFixed(1) + ' m');
 }
 function geo_error(error) {
     switch(error.code) {
         case error.PERMISSION_DENIED:
-            $('#location').text("User denied the request for Geolocation.");
+            $('#altitudeGPS').text("User denied the request for Geolocation.");
             break;
         case error.POSITION_UNAVAILABLE:
-            $('#location').text("Location information is unavailable.");
+            $('#altitudeGPS').text("Location information is unavailable.");
             break;
         case error.TIMEOUT:
-            $('#location').text("The request to get user location timed out.");
+            $('#altitudeGPS').text("The request to get user location timed out.");
             break;
         case error.UNKNOWN_ERROR:
-            $('#location').text("An unknown error occurred.");
+            $('#altitudeGPS').text("An unknown error occurred.");
             break;
     }
 }
