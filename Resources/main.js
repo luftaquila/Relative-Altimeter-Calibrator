@@ -63,16 +63,16 @@ function geo_success(position) {
 function geo_error(error) {
     switch(error.code) {
         case error.PERMISSION_DENIED:
-            $('#altitudeGPS').text("User denied the request for Geolocation.");
+            $('#altitudeGPS').text("Location Access Denied.");
             break;
         case error.POSITION_UNAVAILABLE:
-            $('#altitudeGPS').text("Location information is unavailable.");
+            $('#altitudeGPS').text("Location Unavailable.");
             break;
         case error.TIMEOUT:
-            $('#altitudeGPS').text("The request to get user location timed out.");
+            $('#altitudeGPS').text("Location Request Timeout");
             break;
         case error.UNKNOWN_ERROR:
-            $('#altitudeGPS').text("An unknown error occurred.");
+            $('#altitudeGPS').text("Unknown Error");
             break;
     }
 }
