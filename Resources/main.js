@@ -53,12 +53,12 @@ function geo_success(position) {
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
   var altitudeGPS = position.coords.altitude;
-  var altitudeAccuracy = position.coords.altitudeAccuracy;
+  var accuracy = position.coords.accuracy;
+  var geoid = 26;
   $('#latitude').text('latitude : ' + latitude);
   $('#longitude').text('longitude : ' + longitude);
-  $('#altitudeGPS').text('altitudeGPS : ' + altitudeGPS);
-  $('#altitudeAccuracy').text('altitudeAccuracy : ' + altitudeAccuracy);
-
+  $('#altitudeGPS').text('altitudeGPS : ' + altitudeGPS + geoid);
+  $('#accuracy').text('accuracy : ' + accuracy);
 }
 function geo_error(error) {
     switch(error.code) {
