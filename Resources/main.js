@@ -57,7 +57,7 @@ function geo_success(position) {
   var geoid = 26;
   $('#latitude').text(latitude.toFixed(7) + '°');
   $('#longitude').text(longitude.toFixed(6) + '°');
-  $('#altitudeGPS').text((altitudeGPS ? Number(altitudeGPS - geoid).toFixed(1) + ' m' : null));
+  $('#altitudeGPS').text((altitudeGPS ? Number(altitudeGPS - geoid).toFixed(1) + ' m' : 'GPS Not Available'));
   $('#accuracy').text(accuracy.toFixed(1) + ' m');
 }
 function geo_error(error) {
