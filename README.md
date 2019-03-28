@@ -15,7 +15,7 @@
 ## 2. 고도 계산
 다음 공식을 이용해 상대고도를 계산합니다.  
 
-![equation](http://www.sciweavers.org/tex2img.php?eq=%5Cfrac%7Blog%28%20%5Cfrac%7BP_%7BseaLv%7D%7D%7BP_%7Bcurrent%7D%7D%20%20%29%20%20%5Ctimes%20%28T%2B273.15%2B0.12P%20_%7BV%7D%20%29%7D%7B%7B%5Cfrac%7Bg%7D%7BR%7D%20-%20%5Cfrac%7B0.0065%7D%7B2%7D%20%20%5Ctimes%20log%28%20%5Cfrac%7BP_%7BseaLv%7D%7D%7BP_%7Bcurrent%7D%7D%20%20%29%7D&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0)
+![Alt text](/Resources/equation.jpg)
 
 * **기온**과 **해면기압**은 기상청으로부터 수신합니다.
 * **증기압** 값으로는 5hPa를 사용합니다.  

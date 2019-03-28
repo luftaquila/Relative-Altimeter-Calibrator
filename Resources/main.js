@@ -46,9 +46,7 @@ function updateSpot() {
     }
   });
 }
-function get_location() {
-  navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
-}
+function get_location() { navigator.geolocation.watchPosition(geo_success, geo_error, geo_options); }
 function geo_success(position) {
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
