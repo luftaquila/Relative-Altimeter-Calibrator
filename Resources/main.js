@@ -63,10 +63,10 @@ function geo_success(position) {
 function geo_error(error) {
     switch(error.code) {
         case error.PERMISSION_DENIED:
-            $('#altitudeGPS').text("Location Access Denied.");
+            $('#altitudeGPS').text("Location Access Denied");
             break;
         case error.POSITION_UNAVAILABLE:
-            $('#altitudeGPS').text("Location Unavailable.");
+            $('#altitudeGPS').text("Location Unavailable");
             break;
         case error.TIMEOUT:
             $('#altitudeGPS').text("Location Request Timeout");
