@@ -16,7 +16,7 @@ $(function() {
       }
       data.splice(0, 2);
       for(var i = 0; i < data.length; i++) {
-        data[i] = [data[i][0].innerText, data[i][5].innerText, data[i][13].innerText];
+        data[i] = [data[i][0].textContent, data[i][5].textContent, data[i][12].textContent];
         str += '<option value=' + data[i][0] + '>' + data[i][0] + '</option>';
       }
       $('#spot').html(str);
