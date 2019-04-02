@@ -66,10 +66,13 @@
         <td>
           <a id='googleMapRedirect' style="font-size: 0.9rem; color: #0366d6" target="_blank">구글 지도에서 내 위치 보기 →</a>
         </td>
-      <tr>
+      </tr>
     </table>
+    <div id='map'></div>
     <script src='/Relative-Altimeter-Calibrator/Resources/jquery-3.3.1.min.js'></script>
     <script src='/Relative-Altimeter-Calibrator/Resources/main.js'></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9_pZBrCliabLfUzD78vbzy-D2CgKYYIE&callback=initMap">
+    </script>
     <style>
       td { padding: 0 15 10 }
       input[type="number"]::-webkit-outer-spin-button,
