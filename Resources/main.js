@@ -90,7 +90,7 @@ var geo_options = {
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
-    zoom: 16
+    zoom: 17
   });
 }
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
