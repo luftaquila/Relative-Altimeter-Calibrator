@@ -57,7 +57,6 @@ function geo_success(position) {
   $('#longitude').text(longitude.toFixed(6) + '°');
   $('#altitudeGPS').text((altitudeGPS ? Number(altitudeGPS - geoid).toFixed(1) + ' m' : 'GPS Not Available'));
   $('#accuracy').text(accuracy.toFixed(1) + ' m');
-  $('#googleMapRedirect').attr('href', 'https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude);
 }
 function geo_error(error) {
     switch(error.code) {
@@ -80,11 +79,12 @@ var geo_options = {
   maximumAge: 30000,
   timeout: 27000
 };
+
 var map, infoWindow;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
-    zoom: 6
+    zoom: 11
   });
   infoWindow = new google.maps.InfoWindow;
   if (navigator.geolocation) {
@@ -95,9 +95,14 @@ function initMap() {
       };
 
       infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
       infoWindow.open(map);
       map.setCenter(pos);
+
+      var marker = new gogle.maps.Marker({
+        position: pos,
+        map: map
+      });
+
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
