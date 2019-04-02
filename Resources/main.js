@@ -46,6 +46,7 @@ function updateSpot() {
     }
   });
 }
+var map, pos, markers = [];
 function get_location() { navigator.geolocation.watchPosition(geo_success, geo_error, geo_options); }
 function geo_success(position) {
   var latitude = position.coords.latitude;
@@ -57,6 +58,17 @@ function geo_success(position) {
   $('#longitude').text(longitude.toFixed(6) + '°');
   $('#altitudeGPS').text((altitudeGPS ? Number(altitudeGPS - geoid).toFixed(1) + ' m' : 'GPS Not Available'));
   $('#accuracy').text(accuracy.toFixed(1) + ' m');
+  pos = {
+    lat: latitude,
+    lng: longitude
+  };
+  map.setCenter(pos);
+  markers = [];
+  var marker = new google.maps.Marker({
+    position: pos,
+    map: map
+  });
+  markers.push(marker);
 }
 function geo_error(error) {
     switch(error.code) {
@@ -79,37 +91,11 @@ var geo_options = {
   maximumAge: 30000,
   timeout: 27000
 };
-
-var map, infoWindow;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
-    zoom: 11
+    zoom: 16
   });
-  infoWindow = new google.maps.InfoWindow;
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-
-      infoWindow.setPosition(pos);
-      infoWindow.open(map);
-      map.setCenter(pos);
-
-      var marker = new google.maps.Marker({
-        position: pos,
-        map: map
-      });
-
-    }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
 }
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
