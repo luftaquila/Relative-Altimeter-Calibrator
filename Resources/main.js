@@ -108,11 +108,8 @@ function addMarker(location) {
   markers.push(marker);
 }
 function deleteMarkers() {
-  clearMarkers();
-  markers = [];
-}
-function clearMarkers() {
   setMapOnAll(null);
+  markers = [];
 }
 function setMapOnAll(map) {
   for (var i = 0; i < markers.length; i++) {
