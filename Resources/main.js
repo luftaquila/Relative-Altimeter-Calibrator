@@ -98,7 +98,7 @@ function initMap() {
       infoWindow.open(map);
       map.setCenter(pos);
 
-      var marker = new gogle.maps.Marker({
+      var marker = new google.maps.Marker({
         position: pos,
         map: map
       });
